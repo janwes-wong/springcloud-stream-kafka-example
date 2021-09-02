@@ -1,0 +1,24 @@
+server:
+  port: 9600
+spring:
+  application:
+    name: kafka-consumer
+  cloud:
+    stream:
+      kafka:
+        binder:
+          # kafka消息中间件服务器地址
+          brokers: localhost:9092
+          #zk-nodes: localhost:2181
+      bindings:
+        input:
+          binder: kafka
+          destination: topic-test-210
+          group: input-group-1
+        # 自定义消息输入通道
+        my-input:
+          binder: kafka
+          # 消息监听主题
+          destination: topic-test-220
+          # 消息组
+          group: input-group-2
